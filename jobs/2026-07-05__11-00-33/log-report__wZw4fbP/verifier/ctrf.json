@@ -1,0 +1,32 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 0,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1783249313.0267622,
+            "stop": 1783249313.2056582
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_report_values",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0013349240016395925,
+                "start": 1783249313.184266,
+                "stop": 1783249313.205385,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "def test_report_values():\n        with open('/app/report.json') as f:\n            data = json.load(f)\n    \n        with open('/app/access.log') as f:\n            lines = f.readlines()\n    \n    \n        expected_total = len(lines)\n        expected_unique_ips = len(set(line.split()[0] for line in lines))\n    \n        path_pattern = re.compile(r'\"(GET|POST|PUT|DELETE|HEAD|OPTIONS|PATCH) ([^?]+)')\n        paths = []\n        for line in lines:\n            match = path_pattern.search(line)\n            if match:\n                paths.append(match.group(2))\n    \n        expected_top_path = Counter(paths).most_common(1)[0][0] if paths else \"\"\n    \n        assert data['total_requests'] == expected_total, \\\n            f\"total_requests: expected {expected_total}, got {data['total_requests']}\"\n        assert data['unique_ips'] == expected_unique_ips, \\\n            f\"unique_ips: expected {expected_unique_ips}, got {data['unique_ips']}\"\n>       assert data['top_path'] == expected_top_path, \\\n            f\"top_path: expected {expected_top_path}, got {data['top_path']}\"\nE       AssertionError: top_path: expected /index.html HTTP/1.1\" 200 1024\nE         , got /index.html\nE       assert '/index.html' == '/index.html ...1\" 200 1024\\n'\nE         \nE         - /index.html HTTP/1.1\" 200 1024\nE         + /index.html\n\n/tests/test_outputs.py:29: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "job_name": "2026-07-05__11-36-37",
+    "environment": {
+        "type": "docker",
+        "force_build": true
+    },
+    "tasks": [
+        {
+            "path": "."
+        }
+    ]
+}

@@ -1,0 +1,32 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 0,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1783251148.7966585,
+            "stop": 1783251148.8950663
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_report_values",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0006309940017672488,
+                "start": 1783251148.8716395,
+                "stop": 1783251148.8948433,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "def test_report_values():\n        # Read the agent's output\n>       with open('/app/report.json') as f:\n             ^^^^^^^^^^^^^^^^^^^^^^^^\nE       FileNotFoundError: [Errno 2] No such file or directory: '/app/report.json'\n\n/tests/test_outputs.py:7: FileNotFoundError",
+                "message": "The test failed in the call phase"
+            }
+        ]
+    }
+}
