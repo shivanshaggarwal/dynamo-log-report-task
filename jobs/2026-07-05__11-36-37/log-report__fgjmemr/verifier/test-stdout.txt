@@ -1,0 +1,44 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.12, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 1 item
+
+../tests/test_outputs.py F                                               [100%]
+
+=================================== FAILURES ===================================
+______________________________ test_report_values ______________________________
+
+    def test_report_values():
+    
+        with open('/app/report.json') as f:
+            data = json.load(f)
+    
+    
+        with open('/app/access.log') as f:
+            lines = f.readlines()
+    
+    
+        expected_total = len(lines)
+        expected_unique_ips = len(set(line.split()[0] for line in lines))
+    
+    
+        path_pattern = re.compile(r'"(?:GET|POST|PUT|DELETE|HEAD|PATCH) (\S+) ')
+        paths = []
+        for line in lines:
+            match = path_pattern.search(line)
+            if match:
+                paths.append(match.group(1))
+    
+        expected_top_path = Counter(paths).most_common(1)[0][0] if paths else ""
+    
+    
+>       assert data['total_requests'] == expected_total, \
+            f"total_requests: expected {expected_total}, got {data['total_requests']}"
+E       AssertionError: total_requests: expected 6, got 5
+E       assert 5 == 6
+
+/tests/test_outputs.py:29: AssertionError
+=========================== short test summary info ============================
+FAILED ../tests/test_outputs.py::test_report_values - AssertionError: total_r...
+============================== 1 failed in 0.06s ===============================

@@ -1,0 +1,12 @@
+{
+    "task": {
+        "path": "."
+    },
+    "trial_name": "log-report__kMrWno5",
+    "trials_dir": "jobs/2026-07-05__11-32-57",
+    "environment": {
+        "type": "docker",
+        "force_build": true
+    },
+    "job_id": "f65c91bb-af7c-4c15-8324-015852fe0576"
+}

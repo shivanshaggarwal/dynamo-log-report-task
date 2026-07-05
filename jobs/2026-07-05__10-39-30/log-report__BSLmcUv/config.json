@@ -1,0 +1,12 @@
+{
+    "task": {
+        "path": "."
+    },
+    "trial_name": "log-report__BSLmcUv",
+    "trials_dir": "jobs/2026-07-05__10-39-30",
+    "environment": {
+        "type": "docker",
+        "force_build": true
+    },
+    "job_id": "29bacf4b-0ae2-4de9-a1db-b806bf4e0165"
+}
