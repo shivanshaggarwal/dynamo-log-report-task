@@ -1,0 +1,12 @@
+{
+    "task": {
+        "path": "."
+    },
+    "trial_name": "log-report__fgjmemr",
+    "trials_dir": "jobs/2026-07-05__11-36-37",
+    "environment": {
+        "type": "docker",
+        "force_build": true
+    },
+    "job_id": "d159d111-c6fa-449c-ab2a-b0310de70f1a"
+}

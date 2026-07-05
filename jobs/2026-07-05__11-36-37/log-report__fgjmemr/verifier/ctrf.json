@@ -1,0 +1,32 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 0,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1783251407.1312091,
+            "stop": 1783251407.188558
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_report_values",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0009394829976372421,
+                "start": 1783251407.170072,
+                "stop": 1783251407.1882682,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "def test_report_values():\n    \n        with open('/app/report.json') as f:\n            data = json.load(f)\n    \n    \n        with open('/app/access.log') as f:\n            lines = f.readlines()\n    \n    \n        expected_total = len(lines)\n        expected_unique_ips = len(set(line.split()[0] for line in lines))\n    \n    \n        path_pattern = re.compile(r'\"(?:GET|POST|PUT|DELETE|HEAD|PATCH) (\\S+) ')\n        paths = []\n        for line in lines:\n            match = path_pattern.search(line)\n            if match:\n                paths.append(match.group(1))\n    \n        expected_top_path = Counter(paths).most_common(1)[0][0] if paths else \"\"\n    \n    \n>       assert data['total_requests'] == expected_total, \\\n            f\"total_requests: expected {expected_total}, got {data['total_requests']}\"\nE       AssertionError: total_requests: expected 6, got 5\nE       assert 5 == 6\n\n/tests/test_outputs.py:29: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}
